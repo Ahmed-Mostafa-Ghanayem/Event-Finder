@@ -7,10 +7,9 @@ class EventLargeCell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      elevation: 0.2,
-      color: Colors.white,
-      shape: RoundedRectangleBorder(
+    return Container(
+      decoration: BoxDecoration(
+        color: Colors.white,
         borderRadius: BorderRadius.circular(16),
       ),
       child: Padding(
@@ -99,7 +98,7 @@ class EventLargeCell extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             const Text(
-              "43 Joined",
+              "11 Joined",
               style: TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 15,
