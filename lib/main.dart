@@ -1,16 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:test_flutter/event_large_cell.dart';
+import 'package:test_flutter/events_home.dart';
 
 void main() {
   runApp(
     const MaterialApp(
       debugShowCheckedModeBanner: false,
       title: "My App",
-      home: Scaffold(
-        body: SafeArea(
-          child: EventLargeCell(),
-        ),
-      ),
+      home: EventsHome(),
     ),
   );
 }

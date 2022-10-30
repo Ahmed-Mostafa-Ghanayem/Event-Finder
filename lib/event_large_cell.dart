@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class EventLargeCell extends StatelessWidget {
   const EventLargeCell({Key? key}) : super(key: key);
 
-  final _dimen = 280.0;
+  final _dimen = 250.0;
 
   @override
   Widget build(BuildContext context) {
@@ -49,7 +49,7 @@ class EventLargeCell extends StatelessWidget {
             children: [
               RichText(
                 text: const TextSpan(
-                    text: "01",
+                    text: "20",
                     style: TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
