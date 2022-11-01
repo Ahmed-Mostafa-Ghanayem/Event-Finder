@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:test_flutter/events_home.dart';
+import 'package:test_flutter/features/events_home/presentation/screens/events_home.dart';
 
 void main() {
   runApp(

@@ -17,16 +17,16 @@ class EventLargeCell extends StatelessWidget {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            buildEventDetails(),
+            _buildEventDetails(),
             const SizedBox(height: 16),
-            buildJoinersWidget(),
+            _buildJoinersWidget(),
           ],
         ),
       ),
     );
   }
 
-  SizedBox buildEventDetails() {
+  Widget _buildEventDetails() {
     return SizedBox(
       width: _dimen,
       height: _dimen,
@@ -89,7 +89,7 @@ class EventLargeCell extends StatelessWidget {
     );
   }
 
-  SizedBox buildJoinersWidget() {
+  Widget _buildJoinersWidget() {
     return SizedBox(
       width: _dimen,
       child: Padding(

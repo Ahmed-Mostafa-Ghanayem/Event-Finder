@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'event_large_cell.dart';
-import 'event_list_cell.dart';
+import '../widgets/event_large_cell.dart';
+import '../widgets/event_list_cell.dart';
 
 class EventsHome extends StatelessWidget {
   const EventsHome({Key? key}) : super(key: key);
@@ -31,7 +31,7 @@ class EventsHome extends StatelessWidget {
     );
   }
 
-  AppBar _buildEventsAppBar() {
+  PreferredSizeWidget _buildEventsAppBar() {
     return AppBar(
       toolbarHeight: 64,
       elevation: 0,
@@ -73,7 +73,7 @@ class EventsHome extends StatelessWidget {
     );
   }
 
-  Row _buildEventsForMeHeader() {
+  Widget _buildEventsForMeHeader() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
