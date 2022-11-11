@@ -30,24 +30,37 @@ class _HomeScreenState extends State<HomeScreen> {
           return Container(
             color: Colors.white,
             child: Center(
-              child: Text(state.message),
+              child: TextButton(
+                onPressed: () {
+                  _getHomeData();
+                },
+                child: Text(
+                  state.message,
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontWeight: FontWeight.bold,
+                    fontSize: 16,
+                  ),
+                ),
+              ),
             ),
           );
         } else if (state is Data) {
+          final homeData = state.homeData;
           return Scaffold(
             backgroundColor: const Color(0xFFF9F9FA),
-            appBar: _buildEventsAppBar(state.homeData.profileImage),
+            appBar: _buildEventsAppBar(homeData.profileImage),
             body: SafeArea(
               child: ListView(
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
                 children: [
                   _buildSearchTextField(),
-                  if (state.homeData.myEvents?.isNotEmpty ?? false)
-                    ..._buildMyEventsSection(state.homeData.myEvents!),
-                  if (state.homeData.suggestedEvents?.isNotEmpty ?? false)
+                  if (homeData.myEvents?.isNotEmpty ?? false)
+                    ..._buildMyEventsSection(homeData.myEvents!),
+                  if (homeData.suggestedEvents?.isNotEmpty ?? false)
                     ..._buildSuggestedEventsSection(
-                        state.homeData.suggestedEvents!),
+                        homeData.suggestedEvents!),
                 ],
               ),
             ),
