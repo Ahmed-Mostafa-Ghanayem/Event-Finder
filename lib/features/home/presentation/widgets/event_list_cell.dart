@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../domain/entities/event_entity.dart';
 
 class EventListCell extends StatelessWidget {
-  const EventListCell({Key? key}) : super(key: key);
+  final EventEntity event;
+
+  const EventListCell({Key? key, required this.event}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +24,7 @@ class EventListCell extends StatelessWidget {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(10),
                   child: Image.network(
-                    "https://pbs.twimg.com/media/FVZcFttWYAENFzs?format=jpg&name=large",
+                    event.image,
                     width: 64,
                     height: 64,
                     fit: BoxFit.fill,
@@ -31,16 +34,16 @@ class EventListCell extends StatelessWidget {
                 ),
                 RichText(
                   textAlign: TextAlign.center,
-                  text: const TextSpan(
-                    text: "Nov",
-                    style: TextStyle(
+                  text: TextSpan(
+                    text: event.month,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 13,
                     ),
                     children: [
                       TextSpan(
-                          text: "\n20",
-                          style: TextStyle(
+                          text: "\n${event.day}",
+                          style: const TextStyle(
                             color: Colors.white,
                             fontSize: 28,
                             fontWeight: FontWeight.w400,
@@ -56,26 +59,26 @@ class EventListCell extends StatelessWidget {
                 mainAxisSize: MainAxisSize.min,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
+                children: [
                   Text(
-                    "FIFA World Cup",
-                    style: TextStyle(
+                    event.title,
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 15,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
                   Text(
-                    "09:00 AM to 03:00 PM",
-                    style: TextStyle(
+                    "${event.startTime} to ${event.endTime}",
+                    style: const TextStyle(
                       color: Colors.black45,
                       fontWeight: FontWeight.w500,
                       fontSize: 13,
                     ),
                   ),
                   Text(
-                    "Qatar, Qr",
-                    style: TextStyle(
+                    event.location,
+                    style: const TextStyle(
                       color: Colors.black45,
                       fontWeight: FontWeight.w500,
                       fontSize: 13,

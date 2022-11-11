@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
+import '../../domain/entities/event_entity.dart';
 
 class EventLargeCell extends StatelessWidget {
-  const EventLargeCell({Key? key}) : super(key: key);
+  final EventEntity event;
+
+  const EventLargeCell({Key? key, required this.event}) : super(key: key);
 
   final _dimen = 250.0;
 
@@ -32,11 +35,10 @@ class EventLargeCell extends StatelessWidget {
       height: _dimen,
       child: Container(
         decoration: BoxDecoration(
-          image: const DecorationImage(
+          image: DecorationImage(
             fit: BoxFit.cover,
-            colorFilter: ColorFilter.srgbToLinearGamma(),
             image: NetworkImage(
-              "https://pbs.twimg.com/media/FVZcFttWYAENFzs?format=jpg&name=large",
+              event.image,
             ),
           ),
           borderRadius: BorderRadius.circular(16),
@@ -48,17 +50,17 @@ class EventLargeCell extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               RichText(
-                text: const TextSpan(
-                    text: "20",
-                    style: TextStyle(
+                text: TextSpan(
+                    text: event.day,
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w700,
                       fontSize: 22,
                     ),
                     children: [
                       TextSpan(
-                        text: "\nNovember",
-                        style: TextStyle(
+                        text: "\n${event.month}",
+                        style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w400,
                           fontSize: 19,
@@ -66,17 +68,17 @@ class EventLargeCell extends StatelessWidget {
                       )
                     ]),
               ),
-              const Text(
-                "Qatar\nFIFA\nWorld Cup",
-                style: TextStyle(
+              Text(
+                event.title,
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
                   fontSize: 20,
                 ),
               ),
-              const Text(
-                "Qatar, Qr",
-                style: TextStyle(
+              Text(
+                event.location,
+                style: const TextStyle(
                   color: Colors.white,
                   fontWeight: FontWeight.w500,
                   fontSize: 14,
@@ -97,9 +99,9 @@ class EventLargeCell extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "11 Joined",
-              style: TextStyle(
+            Text(
+              "${event.joiners?.length ?? 0} Joined",
+              style: const TextStyle(
                 fontWeight: FontWeight.w700,
                 fontSize: 15,
               ),
@@ -109,27 +111,27 @@ class EventLargeCell extends StatelessWidget {
               child: Stack(
                 alignment: Alignment.centerLeft,
                 children: [
-                  const CircleAvatar(
+                  CircleAvatar(
                     radius: 18,
                     backgroundImage: NetworkImage(
-                      "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_400,c_scale,q_auto/cnnarabic/2019/06/28/images/130170.webp",
+                      event.joiners![0],
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     left: 33,
                     child: CircleAvatar(
                       radius: 18,
                       backgroundImage: NetworkImage(
-                        "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_400,c_scale,q_auto/cnnarabic/2019/06/28/images/130170.webp",
+                        event.joiners![1],
                       ),
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     left: 63,
                     child: CircleAvatar(
                       radius: 18,
                       backgroundImage: NetworkImage(
-                        "https://cnn-arabic-images.cnn.io/cloudinary/image/upload/w_400,c_scale,q_auto/cnnarabic/2019/06/28/images/130170.webp",
+                        event.joiners![2],
                       ),
                     ),
                   ),
