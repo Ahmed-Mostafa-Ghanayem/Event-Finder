@@ -1,8 +1,8 @@
-import 'package:events_finder/features/home/presentation/state/home_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../domain/entities/event_entity.dart';
+import '../cubit/home_cubit.dart';
 import '../widgets/event_large_cell.dart';
 import '../widgets/event_list_cell.dart';
 
@@ -14,7 +14,7 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  _getHomeData() => BlocProvider.of<HomeCubit>(context).getHomeData();
+  _getHomeData() => context.read<HomeCubit>().getHomeData();
 
   @override
   void initState() {
@@ -26,7 +26,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {
-        if (state is Error) {
+        if (state is HomeFailure) {
           return Container(
             color: Colors.white,
             child: Center(
@@ -45,7 +45,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           );
-        } else if (state is Data) {
+        } else if (state is HomeData) {
           final homeData = state.homeData;
           return Scaffold(
             backgroundColor: const Color(0xFFF9F9FA),
@@ -59,8 +59,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   if (homeData.myEvents?.isNotEmpty ?? false)
                     ..._buildMyEventsSection(homeData.myEvents!),
                   if (homeData.suggestedEvents?.isNotEmpty ?? false)
-                    ..._buildSuggestedEventsSection(
-                        homeData.suggestedEvents!),
+                    ..._buildSuggestedEventsSection(homeData.suggestedEvents!),
                 ],
               ),
             ),
@@ -80,6 +79,7 @@ class _HomeScreenState extends State<HomeScreen> {
 
   PreferredSizeWidget _buildEventsAppBar(String profileImage) {
     return AppBar(
+      automaticallyImplyLeading: false,
       toolbarHeight: 64,
       elevation: 0,
       title: _buildAppBarTitle(),

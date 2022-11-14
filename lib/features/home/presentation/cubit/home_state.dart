@@ -14,19 +14,19 @@ class Loading extends HomeState {
   List<Object> get props => [];
 }
 
-class Data extends HomeState {
+class HomeData extends HomeState {
   final HomeEntity homeData;
 
-  const Data(this.homeData);
+  const HomeData(this.homeData);
 
   @override
   List<Object> get props => [homeData];
 }
 
-class Error extends HomeState {
+class HomeFailure extends HomeState {
   final String message;
 
-  const Error(this.message);
+  const HomeFailure(this.message);
 
   @override
   List<Object> get props => [message];

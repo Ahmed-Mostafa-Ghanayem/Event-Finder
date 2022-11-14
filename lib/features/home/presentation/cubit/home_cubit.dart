@@ -1,8 +1,8 @@
 import 'package:equatable/equatable.dart';
-import 'package:events_finder/features/home/domain/entities/home_entity.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../domain/use_cases/get_home_data.dart';
+import '../../domain/entities/home_entity.dart';
+import '../../domain/use_cases/get_home_data_use_case.dart';
 
 part 'home_state.dart';
 
@@ -15,9 +15,9 @@ class HomeCubit extends Cubit<HomeState> {
     emit(Loading());
     try {
       final homeData = await getHomeDataUseCase();
-      emit(Data(homeData));
+      emit(HomeData(homeData));
     } catch (e) {
-      emit(const Error("Something went wrong!"));
+      emit(const HomeFailure("Something went wrong!"));
     }
   }
 }
