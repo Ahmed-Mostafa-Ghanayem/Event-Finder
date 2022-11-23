@@ -6,8 +6,8 @@ class EventEntity extends Equatable {
   final String title;
   final String location;
   final String image;
-  final String startTime;
-  final String endTime;
+  final String? startTime;
+  final String? endTime;
   final List<String>? joiners;
 
   const EventEntity({
@@ -16,8 +16,8 @@ class EventEntity extends Equatable {
     required this.title,
     required this.location,
     required this.image,
-    required this.startTime,
-    required this.endTime,
+    this.startTime,
+    this.endTime,
     this.joiners,
   });
 

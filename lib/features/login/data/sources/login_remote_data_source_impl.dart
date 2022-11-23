@@ -7,7 +7,11 @@ class LoginRemoteDataSourceImpl implements LoginRemoteDataSource {
   Future<UserModel> login(String username, String password) async {
     return Future.delayed(
       const Duration(seconds: 3),
-      () => const UserModel(id: "user@nana.sa", username: "Ahmed Mostafa"),
+      () => const UserModel(
+        id: "user@nana.sa",
+        firstName: "Ahmed",
+        lastName: "Mostafa",
+      ),
     );
   }
 }

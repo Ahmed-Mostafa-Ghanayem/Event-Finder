@@ -7,8 +7,8 @@ class EventModel extends EventEntity {
     required super.title,
     required super.location,
     required super.image,
-    required super.startTime,
-    required super.endTime,
+    super.startTime,
+    super.endTime,
     super.joiners,
   });
 }
