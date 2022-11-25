@@ -1,10 +1,9 @@
+import 'package:events_finder/features/home/domain/entities/event_entity.dart';
+import 'package:events_finder/features/home/presentation/cubit/home_cubit.dart';
+import 'package:events_finder/features/home/presentation/widgets/event_large_cell.dart';
+import 'package:events_finder/features/home/presentation/widgets/event_list_cell.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/entities/event_entity.dart';
-import '../cubit/home_cubit.dart';
-import '../widgets/event_large_cell.dart';
-import '../widgets/event_list_cell.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);

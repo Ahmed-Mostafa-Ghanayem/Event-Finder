@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'bloc_observer.dart';
-import 'features/login/presentation/cubit/login_cubit.dart';
-import 'features/login/presentation/screens/login_screen.dart';
-import 'shared/di/service_locator.dart';
+import 'package:events_finder/bloc_observer.dart';
+import 'package:events_finder/features/login/presentation/cubit/login_cubit.dart';
+import 'package:events_finder/features/login/presentation/screens/login_screen.dart';
+import 'package:events_finder/shared/di/service_locator.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

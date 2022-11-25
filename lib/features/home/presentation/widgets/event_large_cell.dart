@@ -1,5 +1,5 @@
+import 'package:events_finder/features/home/domain/entities/event_entity.dart';
 import 'package:flutter/material.dart';
-import '../../domain/entities/event_entity.dart';
 
 class EventLargeCell extends StatelessWidget {
   final EventEntity event;

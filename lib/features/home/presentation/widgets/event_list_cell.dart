@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../domain/entities/event_entity.dart';
+import 'package:events_finder/features/home/domain/entities/event_entity.dart';
 
 class EventListCell extends StatelessWidget {
   final EventEntity event;

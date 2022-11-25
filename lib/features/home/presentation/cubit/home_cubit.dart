@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:events_finder/features/home/domain/entities/home_entity.dart';
+import 'package:events_finder/features/home/domain/use_cases/get_home_data_use_case.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/entities/home_entity.dart';
-import '../../domain/use_cases/get_home_data_use_case.dart';
 
 part 'home_state.dart';
 

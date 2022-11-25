@@ -1,8 +1,7 @@
 import 'package:equatable/equatable.dart';
+import 'package:events_finder/features/login/domain/use_cases/login_use_case.dart';
 import 'package:events_finder/shared/exceptions/validation_exception.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
-import '../../domain/use_cases/login_use_case.dart';
 
 part 'login_state.dart';
 
