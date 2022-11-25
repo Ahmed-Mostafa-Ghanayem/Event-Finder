@@ -17,12 +17,6 @@ class _HomeScreenState extends State<HomeScreen> {
   _getHomeData() => context.read<HomeCubit>().getHomeData();
 
   @override
-  void initState() {
-    super.initState();
-    _getHomeData();
-  }
-
-  @override
   Widget build(BuildContext context) {
     return BlocBuilder<HomeCubit, HomeState>(
       builder: (context, state) {

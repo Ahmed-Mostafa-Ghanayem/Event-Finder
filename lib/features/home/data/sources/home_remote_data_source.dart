@@ -1,7 +1,7 @@
-import '../models/home_model.dart';
+import '../../domain/entities/home_entity.dart';
 
 abstract class HomeRemoteDataSource {
-  Future<HomeModel> getEventsHome();
+  Future<HomeEntity> getEventsHome();
 }
 
 

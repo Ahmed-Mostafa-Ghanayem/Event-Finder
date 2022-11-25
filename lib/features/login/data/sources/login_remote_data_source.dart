@@ -1,5 +1,5 @@
-import '../models/user_model.dart';
+import '../../domain/entities/user_entity.dart';
 
 abstract class LoginRemoteDataSource {
-  Future<UserModel> login(String username, String password);
+  Future<UserEntity> login(String username, String password);
 }

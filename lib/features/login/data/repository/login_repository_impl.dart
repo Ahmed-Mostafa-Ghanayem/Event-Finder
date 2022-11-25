@@ -1,6 +1,5 @@
 import '../../domain/entities/user_entity.dart';
 import '../../domain/repository/login_repository.dart';
-import '../models/user_model.dart';
 import '../sources/login_remote_data_source.dart';
 
 class LoginRepositoryImpl implements LoginRepository {
@@ -13,7 +12,7 @@ class LoginRepositoryImpl implements LoginRepository {
     return remote.login(username, password).then((value) => cacheUser(value));
   }
 
-  Future<UserEntity> cacheUser(UserModel user) async {
+  Future<UserEntity> cacheUser(UserEntity user) async {
     // Todo cache user data
     return user;
   }

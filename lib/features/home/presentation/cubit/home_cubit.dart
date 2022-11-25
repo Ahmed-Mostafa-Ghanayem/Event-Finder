@@ -9,7 +9,9 @@ part 'home_state.dart';
 class HomeCubit extends Cubit<HomeState> {
   final GetHomeDataUseCase getHomeDataUseCase;
 
-  HomeCubit({required this.getHomeDataUseCase}) : super(Initial());
+  HomeCubit({required this.getHomeDataUseCase}) : super(Initial()) {
+    getHomeData();
+  }
 
   Future<void> getHomeData() async {
     emit(Loading());
