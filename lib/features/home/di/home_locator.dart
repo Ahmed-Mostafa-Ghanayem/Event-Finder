@@ -6,10 +6,10 @@ import 'package:events_finder/features/home/domain/use_cases/get_home_data_use_c
 import 'package:events_finder/features/home/presentation/cubit/home_cubit.dart';
 import 'package:get_it/get_it.dart';
 
-Future<void> initHomeLocator(GetIt locator) async {
+void initHomeLocator(GetIt locator) {
   // data sources
   locator.registerFactory<HomeRemoteDataSource>(
-    () => HomeRemoteDataSourceImpl(),
+    () => HomeRemoteDataSourceImpl(httpClient: locator()),
   );
   // repository
   locator.registerFactory<HomeRepository>(

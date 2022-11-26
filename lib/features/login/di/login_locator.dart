@@ -2,7 +2,7 @@ import 'package:events_finder/features/login/domain/use_cases/login_use_case.dar
 import 'package:events_finder/features/login/presentation/cubit/login_cubit.dart';
 import 'package:get_it/get_it.dart';
 
-Future<void> initLoginLocator(GetIt locator) async {
+void initLoginLocator(GetIt locator) {
   // use case
   locator.registerFactory<LoginUseCase>(
     () => LoginUseCase(

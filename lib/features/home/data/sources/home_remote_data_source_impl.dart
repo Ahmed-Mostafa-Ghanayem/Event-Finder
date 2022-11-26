@@ -5,18 +5,13 @@ import 'package:events_finder/features/home/data/sources/home_remote_data_source
 import 'package:events_finder/features/home/domain/entities/home_entity.dart';
 
 class HomeRemoteDataSourceImpl implements HomeRemoteDataSource {
-  final Dio dio = Dio();
+  final Dio httpClient;
 
-  HomeRemoteDataSourceImpl() {
-    dio.options
-      ..baseUrl = "https://4uc1gdg1vf.api.quickmocker.com/"
-      ..responseType = ResponseType.plain
-      ..followRedirects = false;
-  }
+  HomeRemoteDataSourceImpl({required this.httpClient});
 
   @override
   Future<HomeEntity> getEventsHome() async {
-    return dio
+    return httpClient
         .get("home")
         .then((response) => jsonDecode(response.data))
         .then((data) => HomeEntity.fromJson(data));

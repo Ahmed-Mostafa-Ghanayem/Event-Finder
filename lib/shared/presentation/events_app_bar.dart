@@ -6,7 +6,7 @@ class EventsAppBar extends StatelessWidget {
   const EventsAppBar({super.key, required this.profileImage});
 
   @override
-  PreferredSizeWidget build(BuildContext context) {
+  Widget build(BuildContext context) {
     return _buildEventsAppBar(profileImage);
   }
 

@@ -7,13 +7,13 @@ import 'package:events_finder/features/user/domain/repository/user_repository.da
 import 'package:events_finder/features/user/domain/use_cases/get_user_use_case.dart';
 import 'package:get_it/get_it.dart';
 
-Future<void> initUserLocator(GetIt locator) async {
+void initUserLocator(GetIt locator) {
   // data sources
   locator.registerFactory<UserRemoteDataSource>(
-    () => UserRemoteDataSourceImpl(),
+    () => UserRemoteDataSourceImpl(httpClient: locator()),
   );
   locator.registerFactory<UserLocalDataSource>(
-    () => UserLocalDataSourceImpl(),
+    () => UserLocalDataSourceImpl(preferences: locator()),
   );
   // repository
   locator.registerFactory<UserRepository>(
