@@ -10,14 +10,14 @@ import 'package:get_it/get_it.dart';
 
 void initAuthenticationLocator(GetIt locator) {
   // data sources
-  locator.registerFactory<AuthenticationRemoteDataSource>(
+  locator.registerLazySingleton<AuthenticationRemoteDataSource>(
     () => AuthenticationRemoteDataSourceImpl(httpClient: locator()),
   );
-  locator.registerFactory<AuthenticationLocalDataSource>(
+  locator.registerLazySingleton<AuthenticationLocalDataSource>(
     () => AuthenticationLocalDataSourceImpl(preferences: locator()),
   );
   // repository
-  locator.registerFactory<AuthenticationRepository>(
+  locator.registerLazySingleton<AuthenticationRepository>(
     () => AuthenticationRepositoryImpl(remote: locator(), local: locator()),
   );
   // use case

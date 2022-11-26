@@ -9,14 +9,14 @@ import 'package:get_it/get_it.dart';
 
 void initUserLocator(GetIt locator) {
   // data sources
-  locator.registerFactory<UserRemoteDataSource>(
+  locator.registerLazySingleton<UserRemoteDataSource>(
     () => UserRemoteDataSourceImpl(httpClient: locator()),
   );
-  locator.registerFactory<UserLocalDataSource>(
+  locator.registerLazySingleton<UserLocalDataSource>(
     () => UserLocalDataSourceImpl(preferences: locator()),
   );
   // repository
-  locator.registerFactory<UserRepository>(
+  locator.registerLazySingleton<UserRepository>(
     () => UserRepositoryImpl(remote: locator(), local: locator()),
   );
   // use case

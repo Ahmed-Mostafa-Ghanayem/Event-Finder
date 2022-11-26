@@ -8,11 +8,11 @@ import 'package:get_it/get_it.dart';
 
 void initHomeLocator(GetIt locator) {
   // data sources
-  locator.registerFactory<HomeRemoteDataSource>(
+  locator.registerLazySingleton<HomeRemoteDataSource>(
     () => HomeRemoteDataSourceImpl(httpClient: locator()),
   );
   // repository
-  locator.registerFactory<HomeRepository>(
+  locator.registerLazySingleton<HomeRepository>(
     () => HomeRepositoryImpl(remote: locator()),
   );
   // use case
