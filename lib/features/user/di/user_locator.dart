@@ -1,4 +1,6 @@
 import 'package:events_finder/features/user/data/repository/user_repository_impl.dart';
+import 'package:events_finder/features/user/data/sources/user_local_data_source.dart';
+import 'package:events_finder/features/user/data/sources/user_local_data_source_impl.dart';
 import 'package:events_finder/features/user/data/sources/user_remote_data_source.dart';
 import 'package:events_finder/features/user/data/sources/user_remote_data_source_impl.dart';
 import 'package:events_finder/features/user/domain/repository/user_repository.dart';
@@ -10,9 +12,12 @@ Future<void> initUserLocator(GetIt locator) async {
   locator.registerFactory<UserRemoteDataSource>(
     () => UserRemoteDataSourceImpl(),
   );
+  locator.registerFactory<UserLocalDataSource>(
+    () => UserLocalDataSourceImpl(),
+  );
   // repository
   locator.registerFactory<UserRepository>(
-    () => UserRepositoryImpl(remote: locator()),
+    () => UserRepositoryImpl(remote: locator(), local: locator()),
   );
   // use case
   locator.registerFactory<GetUserUseCase>(

@@ -12,8 +12,13 @@ class AuthenticationRepositoryImpl implements AuthenticationRepository {
     return remote.authenticate(username, password);
   }
 
-  Future<TokenEntity> cacheUser(TokenEntity user) async {
-    // Todo cache user data
-    return user;
+  @override
+  Future<void> clearCacheToken() {
+    throw UnimplementedError();
+  }
+
+  @override
+  Future<TokenEntity> getCachedToken() {
+    throw UnimplementedError();
   }
 }

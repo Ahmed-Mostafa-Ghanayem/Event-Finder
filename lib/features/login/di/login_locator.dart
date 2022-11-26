@@ -8,6 +8,7 @@ Future<void> initLoginLocator(GetIt locator) async {
     () => LoginUseCase(
       authenticateUseCase: locator(),
       getUserUseCase: locator(),
+      clearTokenUseCase: locator(),
     ),
   );
   // cubit
