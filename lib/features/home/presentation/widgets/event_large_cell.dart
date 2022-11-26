@@ -3,10 +3,9 @@ import 'package:flutter/material.dart';
 
 class EventLargeCell extends StatelessWidget {
   final EventEntity event;
+  final double dimen;
 
-  const EventLargeCell({Key? key, required this.event}) : super(key: key);
-
-  final _dimen = 250.0;
+  const EventLargeCell({super.key, required this.event, required this.dimen});
 
   @override
   Widget build(BuildContext context) {
@@ -17,11 +16,11 @@ class EventLargeCell extends StatelessWidget {
       ),
       child: Padding(
         padding: const EdgeInsets.all(16),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Wrap(
+          direction: Axis.vertical,
+          spacing: 16,
           children: [
             _buildEventDetails(),
-            const SizedBox(height: 16),
             _buildJoinersWidget(),
           ],
         ),
@@ -31,8 +30,8 @@ class EventLargeCell extends StatelessWidget {
 
   Widget _buildEventDetails() {
     return SizedBox(
-      width: _dimen,
-      height: _dimen,
+      width: dimen,
+      height: dimen,
       child: Container(
         decoration: BoxDecoration(
           image: DecorationImage(
@@ -51,22 +50,25 @@ class EventLargeCell extends StatelessWidget {
             children: [
               RichText(
                 text: TextSpan(
-                    text: event.day,
-                    style: const TextStyle(
-                      color: Colors.white,
-                      fontWeight: FontWeight.w700,
-                      fontSize: 22,
+                  children: [
+                    TextSpan(
+                      text: event.day,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w700,
+                        fontSize: 22,
+                      ),
                     ),
-                    children: [
-                      TextSpan(
-                        text: "\n${event.month}",
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w400,
-                          fontSize: 19,
-                        ),
-                      )
-                    ]),
+                    TextSpan(
+                      text: "\n${event.month}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 19,
+                      ),
+                    )
+                  ],
+                ),
               ),
               Text(
                 event.title,
@@ -93,7 +95,7 @@ class EventLargeCell extends StatelessWidget {
 
   Widget _buildJoinersWidget() {
     return SizedBox(
-      width: _dimen,
+      width: dimen,
       child: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Row(
@@ -145,9 +147,10 @@ class EventLargeCell extends StatelessWidget {
                         color: Colors.black,
                         borderRadius: BorderRadius.circular(16),
                       ),
-                      child: const Text(
-                        "8",
-                        style: TextStyle(color: Colors.white, fontSize: 13),
+                      child: Text(
+                        "${event.joiners!.length - 3}",
+                        style:
+                            const TextStyle(color: Colors.white, fontSize: 13),
                       ),
                     ),
                   ),

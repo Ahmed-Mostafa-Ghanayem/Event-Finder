@@ -50,7 +50,7 @@ class _HomeScreenState extends State<HomeScreen> {
                 children: [
                   _buildSearchTextField(),
                   if (homeData.myEvents?.isNotEmpty ?? false)
-                    ..._buildMyEventsSection(homeData.myEvents!),
+                    ..._buildMyEventsSection(context, homeData.myEvents!),
                   if (homeData.suggestedEvents?.isNotEmpty ?? false)
                     ..._buildSuggestedEventsSection(homeData.suggestedEvents!),
                 ],
@@ -150,19 +150,22 @@ class _HomeScreenState extends State<HomeScreen> {
     );
   }
 
-  List<Widget> _buildMyEventsSection(List<EventEntity> myEvents) {
+  List<Widget> _buildMyEventsSection(
+    BuildContext context,
+    List<EventEntity> myEvents,
+  ) {
+    final dimen = MediaQuery.of(context).size.width * 0.65;
     return [
       const SizedBox(height: 20),
-      SizedBox(
-        height: 350,
-        child: ListView.separated(
-          itemCount: myEvents.length,
-          scrollDirection: Axis.horizontal,
-          separatorBuilder: (BuildContext context, int index) => const SizedBox(
-            width: 16,
-          ),
-          itemBuilder: (BuildContext context, int index) =>
-              EventLargeCell(event: myEvents[index]),
+      SingleChildScrollView(
+        scrollDirection: Axis.horizontal,
+        child: Wrap(
+          direction: Axis.horizontal,
+          spacing: 16,
+          children: [
+            for (int i = 0; i < myEvents.length; i++)
+              EventLargeCell(event: myEvents[i], dimen: dimen)
+          ],
         ),
       ),
     ];
